@@ -98,7 +98,7 @@ body {
   border: 2px solid #ccc;
   outline: none;
   border-radius: 10px;
-  width: 35em;
+  width: 35rem;
   max-height: 40px;
   gap: 5px;
   display: flex;
@@ -222,4 +222,16 @@ body {
 .name_and_episode {
   display: flex;
   flex-direction: column;
+}
+
+@media (width <= 640px) {
+  body {
+    padding: 10px;
+  }
+  .suggestions_container {
+    width: 100%;
+  }
+  .selected_element_input_wrapper {
+    width: 100%;
+  }
 }

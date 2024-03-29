@@ -5,11 +5,11 @@ import React, { useRef, useState, useEffect } from "react";
 import Character from "../types/chracter";
 
 //Components
-import SelectItem from "./selectItem"
-import SelectedElement from "./selectedElement";
+import SelectItem from "./SelectItem"
+import SelectedElement from "./SelectedElement";
 
 //Style
-import "./searchbox.css";
+import "./Searchbox.css";
 
 // Interface
 interface NotFoundProps {
@@ -172,7 +172,7 @@ const Searchbox = () => {
             <div className="selected_element_input_wrapper">
                 <SelectedElement
                     selectedCharacters={selectedCharacters}
-                    handleAddRemoveCharacter={(char: Character, action?: "Remove") => handleAddRemoveCharacter(char, "Remove")}
+                    handleAddRemoveCharacter={(char: Character, action?: "Remove") => handleAddRemoveCharacter(char, action)}
                     setDropdown={() => setDropdown(!dropDown)}
                     dropdown={dropDown}
                     ref={dropdownListRef}

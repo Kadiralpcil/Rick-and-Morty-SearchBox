@@ -5,7 +5,7 @@ import { useMemo } from "react";
 import Character from "../types/chracter";
 
 //CSS
-import "./searchbox.css";
+import "./Searchbox.css";
 
 interface SelectItemProps {
     currentName: string;
@@ -38,7 +38,7 @@ export default function SelectItem({
         const parts = name.split(new RegExp(`(${currentName})`, "gi"));
 
         return (
-            <div tabIndex={-1}>
+            <div>
                 {parts.map((part, i) =>
                     part.toLowerCase() === currentName.toLowerCase() ? (
                         <span key={i}>
