@@ -26,7 +26,6 @@ const SelectedElement = forwardRef<HTMLDivElement, selectedElementProps>(
     ) => {
 
         const { width } = useWindowDimensions();
-        console.log(width)
 
         const getSlicedChracters = (where: "SearchBox" | "Dropdown") => {
             switch (where) {
