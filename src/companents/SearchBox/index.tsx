@@ -2,14 +2,14 @@
 import React, { useRef, useState, useEffect } from "react";
 
 //Types
-import Character from "../types/chracter";
+import Character from "../../types/chracter";
 
 //Components
 import SelectItem from "./SelectItem"
 import SelectedElement from "./SelectedElement";
 
 //Style
-import "./Searchbox.css";
+import styles from "./index.module.css";
 
 // Interface
 interface NotFoundProps {
@@ -168,8 +168,8 @@ const Searchbox = () => {
     }, []);
 
     return (
-        <div className="searchbox_wrapper">
-            <div className="selected_element_input_wrapper">
+        <div className={styles.searchbox_wrapper}>
+            <div className={styles.selected_element_input_wrapper}>
                 <SelectedElement
                     selectedCharacters={selectedCharacters}
                     handleAddRemoveCharacter={(char: Character, action?: "Remove") => handleAddRemoveCharacter(char, action)}
@@ -180,22 +180,22 @@ const Searchbox = () => {
                 <input
                     ref={inputRef}
                     onChange={(e) => filterCharacterByQuery(e.target.value)}
-                    className="input"
+                    className={styles.input}
                     placeholder="Search character..."
                     value={currentName}
                     onKeyDown={handleKeyDown}
                 />
             </div>
-            <div ref={suggestionContainer} hidden={currentName === ""} className="suggestions_container">
+            <div ref={suggestionContainer} hidden={currentName === ""} className={styles.suggestions_container}>
                 {loading ? (
-                    <div className="notify_messege">
-                        <span className="loading_text">loading..</span>
-                        <img className="loading" src={require('./../assets/loading.gif')}
+                    <div className={styles.notify_messege}>
+                        <span className={styles.loading_text}>loading..</span>
+                        <img className={styles.loading} src="/loading.gif"
                             alt="loading.."
                         />
                     </div>
                 ) : notFound.status && filteredCharacter.length === 0 ? (
-                    <div className="notify_messege">{notFound.message}</div>
+                    <div className={styles.notify_messege}>{notFound.message}</div>
                 ) : (
                     filteredCharacter.map((character, index) => (
                         <SelectItem

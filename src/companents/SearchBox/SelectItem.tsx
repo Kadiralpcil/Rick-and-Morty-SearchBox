@@ -1,11 +1,8 @@
-//React
-import { useMemo } from "react";
-
 //Types
-import Character from "../types/chracter";
+import Character from "../../types/chracter";
 
-//CSS
-import "./Searchbox.css";
+//Style
+import styles from "./index.module.css";
 
 interface SelectItemProps {
     currentName: string;
@@ -24,14 +21,6 @@ export default function SelectItem({
     handleAddRemoveCharacter,
     hoveredElement,
 }: SelectItemProps) {
-
-    //Memoization
-    const className = useMemo(() => {
-        return hoveredElement?.id === character.id
-            ? "select_element active"
-            : "select_element";
-    }, [character.id, hoveredElement?.id]);
-
     //Functions
     const renderCell = (name: string) => {
 
@@ -56,7 +45,7 @@ export default function SelectItem({
         <label
             tabIndex={0}
             htmlFor={character.id.toString()}
-            className={className}
+            className={`${styles.select_element} ${hoveredElement?.id === character.id ? styles.active : ""}`}
             key={character.id}
         >
             <input
@@ -66,8 +55,8 @@ export default function SelectItem({
                 onChange={() => handleAddRemoveCharacter(character)}
                 type="checkbox"
             />
-            <img className="char_img" src={character.image} alt={character.name} />
-            <div tabIndex={-1} className="name_and_episode">
+            <img className={styles.char_img} src={character.image} alt={character.name} />
+            <div tabIndex={-1} className={styles.name_and_episode}>
                 <span>{renderCell(character.name)}</span>
                 <span>{character.episode.length} Episodes</span>
             </div>

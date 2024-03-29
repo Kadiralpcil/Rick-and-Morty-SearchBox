@@ -1,12 +1,15 @@
 //React
-import React, { forwardRef } from "react";
+import { forwardRef } from "react";
 
 //Types
-import Character from "../types/chracter";
+import Character from "../../types/chracter";
 
 //Icons
 import { RxCross2 } from "react-icons/rx";
 import { FaAngleDown } from "react-icons/fa";
+
+//Style
+import styles from "./index.module.css";
 
 interface selectedElementProps {
     selectedCharacters: Character[];
@@ -23,38 +26,38 @@ const SelectedElement = forwardRef<HTMLDivElement, selectedElementProps>(
         return (
             <>
                 {selectedCharacters.slice(0, 2).map((char, index) => (
-                    <div className="selected_element" key={index}>
-                        <div className="char_name">{char.name}</div>
+                    <div className={styles.selected_element} key={index}>
+                        <div className={styles.char_name}>{char.name}</div>
                         <span
                             onClick={() => handleAddRemoveCharacter(char, "Remove")}
-                            className="remove_item"
+                            className={styles.remove_item}
                         >
                             <RxCross2 color="white" />
                         </span>
                     </div>
                 ))}
                 {selectedCharacters.length > 2 && (
-                    <div className="selected_wrapper">
-                        <div className="selected_element">
-                            <div onClick={() => setDropdown()} className="char_name">
+                    <div className={styles.selected_wrapper}>
+                        <div className={styles.selected_element}>
+                            <div onClick={() => setDropdown()} className={styles.char_name}>
                                 <span>+{selectedCharacters.length - 2}</span>
-                                <span className="dropdown_down_icon">
+                                <span className={styles.dropdown_down_icon}>
                                     <FaAngleDown />
                                 </span>
                             </div>
                         </div>
                         {dropdown && (
-                            <div ref={ref} className="dropdown_list" tabIndex={0}>
+                            <div ref={ref} className={styles.dropdown_list} tabIndex={0}>
                                 {selectedCharacters.slice(2).map((char) => (
                                     <div
-                                        className=" selected_element_dropdown"
+                                        className={styles.selected_element_dropdown}
                                         key={char.id}
                                         tabIndex={-1}
                                     >
-                                        <div className="char_name">{char.name}</div>
+                                        <div className={styles.char_name}>{char.name}</div>
                                         <span
                                             onClick={() => handleAddRemoveCharacter(char, "Remove")}
-                                            className="remove_item"
+                                            className={styles.remove_item}
                                         >
                                             <RxCross2 color="white" />
                                         </span>
